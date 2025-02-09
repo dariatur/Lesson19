@@ -5,5 +5,4 @@ public interface IConstants {
     String CART_PAGE_URL = LOGIN_PAGE_URL + "cart.html";
     String PRODUCTS_PAGE_URL = LOGIN_PAGE_URL + "inventory.html";
 
-
 }

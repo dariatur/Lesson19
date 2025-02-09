@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.CartPage;
+import pages.HeaderPage;
 import pages.LoginPage;
 import pages.ProductsPage;
 
@@ -18,6 +19,7 @@ public class BaseTest implements IConstants, ITestConstants {
     protected LoginPage loginPage;
     protected ProductsPage productsPage;
     protected CartPage cartPage;
+    protected HeaderPage headerPage;
 
     @BeforeMethod
     public void initTest() {
@@ -32,6 +34,7 @@ public class BaseTest implements IConstants, ITestConstants {
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
         cartPage = new CartPage(driver);
+        headerPage = new HeaderPage(driver);
     }
 
     @AfterMethod
