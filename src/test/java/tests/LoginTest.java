@@ -6,7 +6,7 @@ import pages.LoginPage;
 
 public class LoginTest extends BaseTest {
 
-    @Test(description = "login with empty login field")
+    @Test(description = "login with empty username field")
     public void loginWithEmptyUsernameTest(){
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage.login("",PASSWORD);
