@@ -20,19 +20,12 @@ public class HeaderTest extends BaseTest{
 
     @Test(description = "open cart link from header after login")
     public void openCartTest(){
-        headerPage.openPage(LOGIN_PAGE_URL);
-        loginPage.login(USERNAME, PASSWORD);
-        headerPage.getCartButton().click();
+        headerPage.loginAndOpenCart(USERNAME, PASSWORD);
         Assert.assertEquals(headerPage.getDriver().getCurrentUrl(), CART_PAGE_URL);
     }
 
     @Test(description = "click on menu button and check if menu is open")
     public void clickOnMenuButtonTest(){
-        headerPage.openPage(LOGIN_PAGE_URL);
-        loginPage.login(USERNAME, PASSWORD);
-        headerPage.getMenuButton().click();
-        String hiddenAttr = headerPage.getMenuElement().getDomAttribute("aria-hidden");
-        Assert.assertFalse(Boolean.parseBoolean(hiddenAttr));
+        Assert.assertFalse(headerPage.isMenuHidden(USERNAME, PASSWORD));
     }
-
 }

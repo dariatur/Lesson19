@@ -29,6 +29,4 @@ public class LoginPage extends BasePage{
     public WebDriver getDriver(){
         return driver;
     }
-
-
 }

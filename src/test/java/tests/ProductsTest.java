@@ -13,7 +13,7 @@ public class ProductsTest extends BaseTest{
     //cartPage.getPrice("entity.Product Name")
     //Assertions
 
-    @Test(description = "login and check how many products we see")
+    @Test(description = "check products count on page")
     public void checkAmountOfProducts(){
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage.login(USERNAME, PASSWORD);
@@ -26,19 +26,19 @@ public class ProductsTest extends BaseTest{
         loginPage.login(USERNAME, PASSWORD);
         Product product = productsPage.getProductByName(SAUCE_LABS_BIKE_LIGHT);
         product.addToCart();
-        cartPage.openPage();
-        Assert.assertEquals(cartPage.getQuantity(),1);
+        headerPage.openCartPage();
+        Assert.assertEquals(cartPage.getQuantity(), 1);
         Assert.assertEquals(cartPage.getName(), product.getName());
         Assert.assertEquals(cartPage.getPrice(), product.getPrice());
     }
 
-    @Test
-    public void test(){
+    @Test(description = "check if content of button 'add to cart' changes after adding")
+    public void checkContentOfAddToCartButton(){
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage.login(USERNAME, PASSWORD);
         Product product = productsPage.getProductByName(SAUCE_LABS_BACKPACK);
         product.addToCart();
-        Assert.assertEquals(product.getButton().getText(), "Remove");
+        Assert.assertEquals(product.getButtonText(), "Remove");
     }
 
 }

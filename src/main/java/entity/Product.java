@@ -3,7 +3,7 @@ package entity;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class Product extends BaseEntity{
+public class Product extends BaseEntity {
     private String name;
     private String price;
     private WebElement cartButton;
@@ -24,12 +24,14 @@ public class Product extends BaseEntity{
     }
 
     public WebElement getButton(){
-        cartButton = rootElement.findElement(By.className("btn"));
-        return cartButton;
+        return rootElement.findElement(By.className("btn"));
+    }
+
+    public String getButtonText(){
+        return rootElement.findElement(By.className("btn")).getText();
     }
 
     public void addToCart(){
         cartButton.click();
     }
-
 }

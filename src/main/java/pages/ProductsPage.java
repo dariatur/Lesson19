@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductsPage extends HeaderPage{
+public class ProductsPage extends HeaderPage {
 
     public ProductsPage(WebDriver driver) {
         super(driver);
@@ -17,11 +17,9 @@ public class ProductsPage extends HeaderPage{
     public List<Product> getProductsList(){
         List<WebElement> elements = driver.findElements(By.className("inventory_item"));
         List<Product> result = new ArrayList<>();
-
         for (WebElement element: elements){
             result.add(new Product(element));
         }
-
         return result;
     }
 
@@ -35,5 +33,4 @@ public class ProductsPage extends HeaderPage{
         }
         return product;
     }
-
 }
