@@ -3,6 +3,10 @@ package pages;
 import entity.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginPage extends BasePage{
     public static final By USERNAME_INPUT = By.xpath("//*[@data-test='username']");
@@ -37,5 +41,11 @@ public class LoginPage extends BasePage{
 
     public WebDriver getDriver(){
         return driver;
+    }
+
+    public LoginPage waitForPageOpened() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON));
+        return this;
     }
 }
