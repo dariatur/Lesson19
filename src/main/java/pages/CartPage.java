@@ -12,7 +12,7 @@ public class CartPage extends HeaderPage {
         super(driver);
     }
 
-    public Integer getQuantity(){
+    public int getQuantity(){
         return Integer.parseInt(driver.findElement(QUANTITY).getText());
     }
 
