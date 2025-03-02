@@ -33,8 +33,10 @@ public class LoginTest extends Preconditions {
     public void loginWithIncorrectFieldsTest(){
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage.login(userWithIncorrectFields);
-        Assert.assertEquals(loginPage.getErrorMessageText(), LoginPage.INCORRECT_DATA_IN_FIELDS_ERROR_TEXT);
+        //Assert.assertEquals(loginPage.getErrorMessageText(), LoginPage.INCORRECT_DATA_IN_FIELDS_ERROR_TEXT);
+        Assert.assertEquals(loginPage.getErrorMessageText(), "LoginPage.INCORRECT_DATA_IN_FIELDS_ERROR_TEXT");
     }
+
     @Parameters({"username", "password"})
     @Test(description = "login with correct data")
     public void loginWithCorrectFieldsTest(@Optional(USERNAME) String username,
