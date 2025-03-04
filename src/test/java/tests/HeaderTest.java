@@ -7,25 +7,38 @@ public class HeaderTest extends BaseTest{
 
     @Test(description = "check if we can see Header before login")
     public void isHeaderVisibleBeforeLoginTest(){
-        headerPage.openPage(LOGIN_PAGE_URL);
+        loginPage
+                .openPage(LOGIN_PAGE_URL)
+                .waitForPageOpened();
         Assert.assertTrue(headerPage.getHeaderElems().isEmpty());
     }
 
     @Test(description = "check if we can see Header after login")
     public void isHeaderVisibleAfterLoginTest(){
-        headerPage.openPage(LOGIN_PAGE_URL);
-        loginPage.login(USERNAME, PASSWORD);
+        loginPage
+                .openPage(LOGIN_PAGE_URL)
+                .waitForPageOpened()
+                .login(USERNAME, PASSWORD);
         Assert.assertTrue(headerPage.getHeaderElem().isDisplayed());
     }
 
     @Test(description = "open cart link from header after login")
     public void openCartTest(){
-        headerPage.loginAndOpenCart(USERNAME, PASSWORD);
+        loginPage
+                .openPage(LOGIN_PAGE_URL)
+                .waitForPageOpened()
+                .login(USERNAME, PASSWORD)
+                .clickOnMenuButton();
         Assert.assertEquals(headerPage.getDriver().getCurrentUrl(), CART_PAGE_URL);
     }
 
     @Test(description = "click on menu button and check if menu is open")
     public void clickOnMenuButtonTest(){
-        Assert.assertFalse(headerPage.isMenuHidden(USERNAME, PASSWORD));
+        loginPage
+                .openPage(LOGIN_PAGE_URL)
+                .waitForPageOpened()
+                .login(USERNAME, PASSWORD)
+                .getMenuButton().click();
+        Assert.assertFalse(headerPage.isMenuHidden());
     }
 }
