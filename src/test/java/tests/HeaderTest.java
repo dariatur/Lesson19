@@ -28,7 +28,7 @@ public class HeaderTest extends BaseTest{
                 .openPage(LOGIN_PAGE_URL)
                 .waitForPageOpened()
                 .login(USERNAME, PASSWORD)
-                .getCartButton().click();
+                .clickOnMenuButton();
         Assert.assertEquals(headerPage.getDriver().getCurrentUrl(), CART_PAGE_URL);
     }
 

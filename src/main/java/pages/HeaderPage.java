@@ -32,6 +32,10 @@ public class HeaderPage extends BasePage{
         return driver.findElement(MENU_BUTTON);
     }
 
+    public void clickOnMenuButton() {
+        getMenuButton().click();
+    }
+
     public WebElement getMenuElement(){
         return driver.findElement(MENU_ELEM);
     }
