@@ -23,6 +23,10 @@ public class ProductsPage extends HeaderPage {
         return result;
     }
 
+    public int getProductsListSize(){
+        return getProductsList().size();
+    }
+
     public Product getProductByName(String name){
         List<Product> products = getProductsList();
         Product product = null;

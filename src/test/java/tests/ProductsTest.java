@@ -20,7 +20,7 @@ public class ProductsTest extends BaseTest{
                 .openPage(LOGIN_PAGE_URL)
                 .waitForPageOpened()
                 .login(USERNAME, PASSWORD)
-                .getProductsList().size();
+                .getProductsListSize();
         Assert.assertEquals(amount, 6);
     }
 
