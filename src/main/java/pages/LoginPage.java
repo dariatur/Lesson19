@@ -48,4 +48,9 @@ public class LoginPage extends BasePage{
         wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON));
         return this;
     }
+    @Override
+    public LoginPage openPage(String url){
+        driver.get(url);
+        return this;
+    }
 }

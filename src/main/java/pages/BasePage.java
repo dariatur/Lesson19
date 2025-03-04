@@ -10,7 +10,8 @@ public abstract class BasePage implements IConstants {
         this.driver = driver;
     }
 
-    public void openPage(String url){
+    public BasePage openPage(String url){
         driver.get(url);
+        return this;
     }
 }

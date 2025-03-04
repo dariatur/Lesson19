@@ -27,8 +27,8 @@ public class HeaderPage extends BasePage{
         return driver.findElement(HEADER_ELEM);
     }
 
-    public WebElement getCartButton(){
-        return driver.findElement(CART_BUTTON);
+    public void clickOnCartButton(){
+        driver.findElement(CART_BUTTON).click();
     }
 
     public WebElement getMenuButton(){
@@ -43,20 +43,7 @@ public class HeaderPage extends BasePage{
         driver.findElement(CART_BUTTON).click();
     }
 
-    public void loginAndOpenCart(String username, String password){
-        openPage(LOGIN_PAGE_URL);
-        loginPage.login(username, password);
-        getCartButton().click();
-    }
-
-    public void loginAndOpenMenu(String username, String password){
-        openPage(LOGIN_PAGE_URL);
-        loginPage.login(username, password);
-        getMenuButton().click();
-    }
-
-    public boolean isMenuHidden(String username, String password){
-        loginAndOpenMenu(username, password);
+    public boolean isMenuHidden(){
         String hiddenAttr = getMenuElement().getDomAttribute("aria-hidden");
         return Boolean.parseBoolean(hiddenAttr);
     }

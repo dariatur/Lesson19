@@ -3,6 +3,7 @@ package tests;
 import entity.Product;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 public class ProductsTest extends BaseTest{
     //loginPage.openPage()
@@ -15,30 +16,26 @@ public class ProductsTest extends BaseTest{
 
     @Test(description = "check products count on page")
     public void checkAmountOfProducts(){
-        loginPage.openPage(LOGIN_PAGE_URL);
-        loginPage.login(USERNAME, PASSWORD);
-        Assert.assertEquals(productsPage.getProductsList().size(), 6);
+        int amount = productsSteps.loginAndGetAmount(USERNAME, PASSWORD);
+        Assert.assertEquals(amount, 6);
     }
 
     @Test(description = "add a product to cart and check if it was actually added")
     public void addToCartTest(){
-        loginPage.openPage(LOGIN_PAGE_URL);
-        loginPage.login(USERNAME, PASSWORD);
         Product product = productsPage.getProductByName(SAUCE_LABS_BIKE_LIGHT);
-        product.addToCart();
+        productsSteps.loginAndAddProductToCart(USERNAME, PASSWORD, product);
         headerPage.openCartPage();
-        Assert.assertEquals(cartPage.getQuantity(), 1);
-        Assert.assertEquals(cartPage.getName(), product.getName());
-        Assert.assertEquals(cartPage.getPrice(), product.getPrice());
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(cartPage.getQuantity(), 1);
+        softAssert.assertEquals(cartPage.getName(), product.getName());
+        softAssert.assertEquals(cartPage.getPrice(), product.getPrice());
+        softAssert.assertAll();
     }
 
     @Test(description = "check if content of button 'add to cart' changes after adding")
     public void checkContentOfAddToCartButton(){
-        loginPage.openPage(LOGIN_PAGE_URL);
-        loginPage.login(USERNAME, PASSWORD);
         Product product = productsPage.getProductByName(SAUCE_LABS_BACKPACK);
-        product.addToCart();
+        productsSteps.loginAndAddProductToCart(USERNAME, PASSWORD, product);
         Assert.assertEquals(product.getButtonText(), "Remove");
     }
-
 }
